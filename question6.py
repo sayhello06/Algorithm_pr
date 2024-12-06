@@ -53,8 +53,9 @@ def solution(user_id, report, k):
         mail_count = sum(1 for reported in user_report[user] if reported in banned_user)
         result.append(mail_count)
 
-    print (result)
+    return result
 
 if __name__ == "__main__":
     validation_length(user_id, report)
-    solution(user_id, report, k)
+    print(f"사용자 목록 : {user_id}")
+    print(solution(user_id, report, k))

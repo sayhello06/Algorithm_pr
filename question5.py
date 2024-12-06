@@ -27,7 +27,7 @@ def target_cal():
             
         if not find:
             result.append(0) #find가 최종적으로 False일 때. 즉, 결과값을 찾지 못했을 때 0 반환
-
+        print(f"타겟은: {target}")
         print(result)
 
     else:
