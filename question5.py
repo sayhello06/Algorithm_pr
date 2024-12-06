@@ -3,13 +3,13 @@
 
 nums = [1, 8, 20, 15]
 nums_cache = nums #nums 배열의 복사본 (합 연산에 사용됨)
-target = 28
+target = 29
 result=[] #결과를 저장할 배열
 
-def target_cal():
+def target_cal(nums, target):
+    print(f"타겟은: {target}")
     if 2 <= len(nums) <= 10000: #배열의 크기 제한
 
-        find = False #결과값을 찾았는지 여부 boolean => 불필요한 실행을 없애기 위함
         for x in range (len(nums)):
             num1 = nums[x] 
 
@@ -20,21 +20,12 @@ def target_cal():
                 if sum == target: #타겟 값과 일치한다면
                     result.append(num1) #nums의 x번째 요소를 result 배열에 추가
                     result.append(num2) #nums_cache의 i+1번째 요소를 reult 배열에 추가
-                    find = True #boolean True 반환
-                    break #루프 종료
-            if find:
-                break #find가 True일 때. 즉, 결과값을 찾았을 때 루프 종료
+                    return result #result 반환
             
-        if not find:
-            result.append(0) #find가 최종적으로 False일 때. 즉, 결과값을 찾지 못했을 때 0 반환
-        print(f"타겟은: {target}")
-        print(result)
+        return 0 #못 찾았을 때 0반환
 
     else:
-        print("배열의 크기는 2이상 10,000 이하여야 합니다.")
-        exit #강제종료
-
-
+        raise ValueError("배열의 크기는 2이상 10,000 이하여야 합니다.")
 
 if __name__ == "__main__":
-    target_cal()
+    print(target_cal(nums, target))

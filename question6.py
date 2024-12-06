@@ -39,18 +39,19 @@ def solution(user_id, report, k):
         user_report[reporter].append(reported)
         report_count[reported] += 1
 
-        print(f'"{reporter}"가 {reported}를 신고했습니다.') #신고 메일
+        print(f'"{reporter}"가 {reported}를 신고했습니다.')
+
+        for user, count in report_count.items():
+            print(f"{user}는 {count}번 신고 당했습니다.") #신고 횟수
 
     banned_user = {user for user, count in report_count.items() if count >= k}
-
-    for user, count in report_count.items():
-        print(f"{user}는 {count}번 신고 당했습니다.") #신고 횟수
 
     print(f"정지 당한 사람 : {banned_user}")
 
     result = []
     for user in user_id:
         mail_count = sum(1 for reported in user_report[user] if reported in banned_user)
+        #신고당한 사람이 정지 유저 목록에 있으면 mail_count +1 (신고자한테 알림 메일)
         result.append(mail_count)
 
     return result

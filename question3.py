@@ -4,7 +4,7 @@
 s = "banana"
 word_location = []
 
-def word_find():
+def word_find(s):
     print("입력된 문자 : ", s)
     word_cache = [] #문자 존재 여부를 확인하기 위한 임시 저장소
 
@@ -21,7 +21,7 @@ def word_find():
                 word_location.append(num)
         
         word_cache.append(word) #임시 저장소에 문자 저장
-    print("결과 : ", word_location)
+    return word_location
 
 if __name__ == "__main__":
-    word_find()
+    print(word_find(s))
